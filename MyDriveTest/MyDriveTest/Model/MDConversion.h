@@ -13,7 +13,13 @@
 
 @property (nonatomic, copy, readonly) NSString *toCurrencyString;
 @property (nonatomic, assign, readonly) float conversionRate;
-
+/**
+ *  creates and populates a new instance of the MDConversion object
+ *
+ *  @param conversionDictionary received from the API
+ *
+ *  @return MDConversion object prepopulated with the data received from the API
+ */
 + (instancetype)conversionFromConversionDictionary:(NSDictionary *)conversionDictionary;
 
 @end
