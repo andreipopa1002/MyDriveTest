@@ -14,6 +14,10 @@ Please let us know how long this task took you.
 
 
 
+
+
+
+
 Response:
 I've spent about two days to complete this task. The algorithm that is doing the conversions is not optimal, and will not find the best conversion rate, in order to achieve that it will need to be improved.
 
