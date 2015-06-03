@@ -44,7 +44,7 @@
     CGFloat amount = [self.amountTextField.text floatValue];
     [self showLoadingIndicator];
     typeof(self) __weak weakSelf = self;
-    [self.dataSource convertAmount:amount fromCurrency:fromCurrencyString toCurrency:toCurrencyString withCompletion:^(CGFloat result) {
+    [self.dataSource convertAmount:amount fromCurrency:fromCurrencyString toCurrency:toCurrencyString withCompletion:^(CGFloat result, NSError *error) {
         [weakSelf hideLoadingIndicator];
         weakSelf.resultLabel.text = [NSString stringWithFormat:@"%f %@ = %f %@",amount,fromCurrencyString,result,toCurrencyString];
     }];

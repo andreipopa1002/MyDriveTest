@@ -13,7 +13,7 @@
 @property (nonatomic, strong, readonly) NSArray *curreciesObjects;
 
 + (instancetype)dataSourceWithCompletion:(void(^)(void))completionBlock;
-- (void)convertAmount:(CGFloat)amount fromCurrency:(NSString *)fromCurrencyString toCurrency:(NSString*)toCurrencyString withCompletion:(void(^)(CGFloat result))completionBlock;
+- (void)convertAmount:(CGFloat)amount fromCurrency:(NSString *)fromCurrencyString toCurrency:(NSString*)toCurrencyString withCompletion:(void(^)(CGFloat result, NSError *error))completionBlock;
 - (NSString *)currencyStringForPicker:(UIPickerView *)picker;
 
 @end

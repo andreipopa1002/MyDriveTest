@@ -31,16 +31,17 @@
     return [(MDCurrency *)self.curreciesObjects[[picker selectedRowInComponent:0]] currencyString];
 }
 
-- (void)convertAmount:(CGFloat)amount fromCurrency:(NSString *)fromCurrencyString toCurrency:(NSString*)toCurrencyString withCompletion:(void(^)(CGFloat result))completionBlock {
+- (void)convertAmount:(CGFloat)amount fromCurrency:(NSString *)fromCurrencyString toCurrency:(NSString*)toCurrencyString withCompletion:(void(^)(CGFloat result, NSError *error))completionBlock {
     if ([fromCurrencyString isEqualToString:toCurrencyString]) {
-        completionBlock(amount);
+        completionBlock(amount,nil);
     } else {
         self.currenciesConversionPath = [NSMutableArray new];
         [self computePathForCurrencyString:fromCurrencyString toDestination:toCurrencyString];
         if ([[self.currenciesConversionPath.lastObject currencyString] isEqualToString:toCurrencyString]) {
-            NSLog(@"succes - calculate conversion rate");
+            completionBlock([self convertAmount:amount accordingToPath:self.currenciesConversionPath], nil);
+            self.currenciesConversionPath = nil;
         } else {
-            NSLog(@"error - no possible convervion");
+            completionBlock(0, [NSError errorWithDomain:@"Impossible conversion" code:100 userInfo:nil]);
         }
     }
 }
@@ -99,19 +100,6 @@
     return found;
 }
 
-- (void)convertAmount:(CGFloat)amount fromCurrency:(MDCurrency *)fromCurrency toCurrency:(NSString *)toCurrencyString {
-    BOOL conversionEndFound = NO;
-    for (MDConversion *conversion in fromCurrency.conversions) {
-        if ([conversion.toCurrencyString isEqualToString:fromCurrency.currencyString]) {
-            conversionEndFound = YES;
-            break;
-        }
-    }
-    if (conversionEndFound == NO) {
-        [self convertAmount:amount fromCurrency:fromCurrency toCurrency:toCurrencyString];
-    }
-}
-
 - (void)startFetchingData {
     typeof(self) __weak weakSelf = self;
     [[MDApiClient sharedClient] retrieveConversionsList:^(NSArray *currencyArray) {
@@ -125,22 +113,10 @@
             return [obj1.currencyString compare:obj2.currencyString];
         }];
         weakSelf.curreciesObjects = [NSArray arrayWithArray:currenciesModels];
-        
-        [self printContent];
-        
         if (weakSelf.completionBlock) {
             weakSelf.completionBlock();
         }
     }];
-}
-
-- (void)printContent {
-    for (MDCurrency *currency in self.curreciesObjects) {
-        NSLog(@"# %@",currency);
-        for (MDConversion *conversion in currency.conversions) {
-            NSLog(@"to %@",conversion);
-        }
-    }
 }
 
 - (void)addCurrencyToCurrencyArray:(NSMutableArray *)currenciesModels fromConversionDictionary:(NSDictionary *)conversionDictionary {
@@ -159,6 +135,20 @@
         [foundCurrency addConversionFromDictionary:conversionDictionary];
     }
     
+}
+
+- (CGFloat)convertAmount:(CGFloat)amount accordingToPath:(NSArray *)conversionPath {
+    for (int i = 0; i < conversionPath.count - 1; i++) {
+        MDCurrency *currency = conversionPath[i];
+        MDCurrency *nextCurrencyInPath = conversionPath[i+1];
+        for (MDConversion *conversion in currency.conversions) {
+            if ([conversion.toCurrencyString isEqualToString:nextCurrencyInPath.currencyString]) {
+                amount = amount * conversion.conversionRate;
+                break;
+            }
+        }
+    }
+    return amount;
 }
 
 # pragma mark - UIPickerViewDataSource methods
