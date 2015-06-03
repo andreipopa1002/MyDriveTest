@@ -46,7 +46,11 @@
     typeof(self) __weak weakSelf = self;
     [self.dataSource convertAmount:amount fromCurrency:fromCurrencyString toCurrency:toCurrencyString withCompletion:^(CGFloat result, NSError *error) {
         [weakSelf hideLoadingIndicator];
-        weakSelf.resultLabel.text = [NSString stringWithFormat:@"%f %@ = %f %@",amount,fromCurrencyString,result,toCurrencyString];
+        if (error == nil) {
+            weakSelf.resultLabel.text = [NSString stringWithFormat:@"%f %@ = %f %@",amount,fromCurrencyString,result,toCurrencyString];
+        } else {
+            weakSelf.resultLabel.text = [NSString stringWithFormat:@"ERROR: %@",error.domain];
+        }
     }];
 
     
