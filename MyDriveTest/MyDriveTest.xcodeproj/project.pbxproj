@@ -14,8 +14,9 @@
 		C9572A741B1BACF0008793A2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9572A721B1BACF0008793A2 /* Main.storyboard */; };
 		C9572A761B1BACF0008793A2 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9572A751B1BACF0008793A2 /* Images.xcassets */; };
 		C9572A791B1BACF0008793A2 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = C9572A771B1BACF0008793A2 /* LaunchScreen.xib */; };
-		C9572A851B1BACF1008793A2 /* MyDriveTestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C9572A841B1BACF1008793A2 /* MyDriveTestTests.m */; };
 		C9572A8F1B1BAD5F008793A2 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = C9572A8E1B1BAD5F008793A2 /* Podfile */; };
+		C960AFD01B1F2CBB001823E5 /* MDCurrencyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C960AFCF1B1F2CBB001823E5 /* MDCurrencyTests.m */; };
+		C960AFD21B1F31F8001823E5 /* MDConversionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C960AFD11B1F31F8001823E5 /* MDConversionTests.m */; };
 		C9E10D921B1BB4CE001DB928 /* MDApiClient.m in Sources */ = {isa = PBXBuildFile; fileRef = C9E10D911B1BB4CE001DB928 /* MDApiClient.m */; };
 		C9E10D961B1BBDD4001DB928 /* MDCurrency.m in Sources */ = {isa = PBXBuildFile; fileRef = C9E10D951B1BBDD4001DB928 /* MDCurrency.m */; };
 		C9E10D991B1BBEA4001DB928 /* MDConversion.m in Sources */ = {isa = PBXBuildFile; fileRef = C9E10D981B1BBEA4001DB928 /* MDConversion.m */; };
@@ -49,8 +50,9 @@
 		C9572A781B1BACF0008793A2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		C9572A7E1B1BACF1008793A2 /* MyDriveTestTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyDriveTestTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9572A831B1BACF1008793A2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C9572A841B1BACF1008793A2 /* MyDriveTestTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyDriveTestTests.m; sourceTree = "<group>"; };
 		C9572A8E1B1BAD5F008793A2 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
+		C960AFCF1B1F2CBB001823E5 /* MDCurrencyTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDCurrencyTests.m; sourceTree = "<group>"; };
+		C960AFD11B1F31F8001823E5 /* MDConversionTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDConversionTests.m; sourceTree = "<group>"; };
 		C9E10D901B1BB4CE001DB928 /* MDApiClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDApiClient.h; sourceTree = "<group>"; };
 		C9E10D911B1BB4CE001DB928 /* MDApiClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDApiClient.m; sourceTree = "<group>"; };
 		C9E10D941B1BBDD4001DB928 /* MDCurrency.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDCurrency.h; sourceTree = "<group>"; };
@@ -141,7 +143,8 @@
 		C9572A811B1BACF1008793A2 /* MyDriveTestTests */ = {
 			isa = PBXGroup;
 			children = (
-				C9572A841B1BACF1008793A2 /* MyDriveTestTests.m */,
+				C960AFD11B1F31F8001823E5 /* MDConversionTests.m */,
+				C960AFCF1B1F2CBB001823E5 /* MDCurrencyTests.m */,
 				C9572A821B1BACF1008793A2 /* Supporting Files */,
 			);
 			path = MyDriveTestTests;
@@ -354,7 +357,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C9572A851B1BACF1008793A2 /* MyDriveTestTests.m in Sources */,
+				C960AFD21B1F31F8001823E5 /* MDConversionTests.m in Sources */,
+				C960AFD01B1F2CBB001823E5 /* MDCurrencyTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

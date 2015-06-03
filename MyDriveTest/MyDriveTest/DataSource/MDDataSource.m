@@ -107,7 +107,7 @@
         
         for (NSDictionary *conversionDictionary in currencyArray) {
             [weakSelf addCurrencyToCurrencyArray:currenciesModels fromConversionDictionary:conversionDictionary];
-            [weakSelf addCurrencyToCurrencyArray:currenciesModels fromConversionDictionary:[MDCurrency reverserdConversionFromConversionDictionary:conversionDictionary]];
+            [weakSelf addCurrencyToCurrencyArray:currenciesModels fromConversionDictionary:[MDCurrency reverserdConversionDictionaryFromConversionDictionary:conversionDictionary]];
         }
         [currenciesModels sortUsingComparator:^NSComparisonResult(MDCurrency *obj1, MDCurrency *obj2) {
             return [obj1.currencyString compare:obj2.currencyString];
@@ -122,7 +122,7 @@
 - (void)addCurrencyToCurrencyArray:(NSMutableArray *)currenciesModels fromConversionDictionary:(NSDictionary *)conversionDictionary {
     MDCurrency *foundCurrency = nil;
     for (MDCurrency *currency in currenciesModels) {
-        NSString *fromCurrencyString = [MDCurrency fromCurrecyFromDictionary:conversionDictionary];
+        NSString *fromCurrencyString = [MDCurrency currecyStringFromDictionary:conversionDictionary];
         if ([currency.currencyString isEqualToString:fromCurrencyString]) {
             foundCurrency = currency;
             break;

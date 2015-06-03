@@ -21,11 +21,11 @@
     return [[MDCurrency alloc] initWithConversionDictionary:conversionDictionary];
 }
 
-+ (NSString *)fromCurrecyFromDictionary:(NSDictionary *)conversionDictionary {
++ (NSString *)currecyStringFromDictionary:(NSDictionary *)conversionDictionary {
     return conversionDictionary[@"from"];
 }
 
-+ (NSDictionary *)reverserdConversionFromConversionDictionary:(NSDictionary *)conversionDictionary {
++ (NSDictionary *)reverserdConversionDictionaryFromConversionDictionary:(NSDictionary *)conversionDictionary {
     NSMutableDictionary *reversedConversion = [NSMutableDictionary new];
     [reversedConversion setObject:conversionDictionary[@"from"] forKey:@"to"];
     [reversedConversion setObject:conversionDictionary[@"to"] forKey:@"from"];

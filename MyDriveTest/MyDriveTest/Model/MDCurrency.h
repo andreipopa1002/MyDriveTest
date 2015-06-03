@@ -15,8 +15,8 @@
 @property (nonatomic, strong, readonly) NSArray *conversions;
 
 + (instancetype)currencyWithConversionDictionary:(NSDictionary *)conversionDictionary;
-+ (NSString *)fromCurrecyFromDictionary:(NSDictionary *)conversionDictionary;
-+ (NSDictionary *)reverserdConversionFromConversionDictionary:(NSDictionary *)conversionDictionary;
++ (NSString *)currecyStringFromDictionary:(NSDictionary *)conversionDictionary;
++ (NSDictionary *)reverserdConversionDictionaryFromConversionDictionary:(NSDictionary *)conversionDictionary;
 
 - (void)addConversionFromDictionary:(NSDictionary *)conversionDictionary;
 
